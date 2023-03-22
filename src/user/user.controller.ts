@@ -27,13 +27,14 @@ export class UserController {
 	@UsePipes(new ValidationPipe())
 	@Auth()
 	@HttpCode(200)
-	@Put('login')
+	@Put('profile')
 	async login(@CurrentUser('id') id: number, @Body() dto: UserDto) {
 		return this.userService.updateProfile(id, dto)
 	}
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
+	@Auth()
 	@Patch('profile/favorites/:productId')
 	async toggleFavorite(
 		@Param('productId') productId: number,
