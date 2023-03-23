@@ -23,7 +23,9 @@ export class UserService {
 						images: true,
 						slug: true
 					}
-				}
+				},
+				reviews: true,
+				orders: true
 			}
 		})
 
