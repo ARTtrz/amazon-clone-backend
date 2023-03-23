@@ -30,9 +30,9 @@ export class CategoryController {
 		return await this.categoryService.byId(id)
 	}
 
-	@Patch()
-	async updateCategory(categoryId: number, @Body() dto: CategoryDto) {
-		return await this.categoryService.update(categoryId, dto)
+	@Put(':id')
+	async updateCategory(@Param('id') id: number, @Body() dto: CategoryDto) {
+		return await this.categoryService.update(Number(id), dto)
 	}
 
 	@Post()
@@ -40,8 +40,8 @@ export class CategoryController {
 		return await this.categoryService.create()
 	}
 
-	@Delete()
-	async deleteCategory(categoryId: number) {
-		return await this.categoryService.delete(categoryId)
+	@Delete(':id')
+	async deleteCategory(@Param('id') id: number) {
+		return await this.categoryService.delete(Number(id))
 	}
 }
